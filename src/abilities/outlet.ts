@@ -54,7 +54,7 @@ export class OutletAbility extends Ability {
     }
 
     try {
-      await this.component.set(value as boolean);
+      await this.component.set(!(value as boolean));
     } catch (e) {
       this.log.error(
         'Failed to set switch:',
@@ -69,7 +69,7 @@ export class OutletAbility extends Ability {
    */
   protected outputChangeHandler(value: ShelliesCharacteristicValue) {
     this.service.getCharacteristic(this.Characteristic.On)
-      .updateValue(value as boolean);
+      .updateValue(!(value as boolean));
   }
 
   /**
